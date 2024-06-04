@@ -7,7 +7,12 @@ import (
 )
 
 type CreateInvoiceRequest struct {
-	// Currency code. Currently, can be “BTC”, “TON”, “ETH”, “USDT”, “USDC” or “BUSD”.
+	// Optional. Type of the price, can be “crypto” or “fiat”. Defaults to crypto.
+	CurrencyType string `json:"currency_type"`
+
+	// Optional.  Required if currency_type is “crypto”.
+	// Cryptocurrency alphabetic code.
+	// Supported assets: “USDT”, “TON”, “BTC”, “ETH”, “LTC”, “BNB”, “TRX” and “USDC”.
 	Asset string `json:"asset"`
 
 	// Amount of the invoice in float. For example: 125.50
@@ -52,6 +57,7 @@ type createInvoiceResponse struct {
 // Use this method to create a new invoice. On success, returns an object of the created invoice.
 func (c *Client) CreateInvoice(createInvoiceRequest CreateInvoiceRequest) (*Invoice, error) {
 	responseBodyReader, err := c.request("createInvoice", func(q url.Values) url.Values {
+		q.Add("currency_type", createInvoiceRequest.CurrencyType)
 		q.Add("asset", createInvoiceRequest.Asset)
 		q.Add("amount", createInvoiceRequest.Amount)
 		if createInvoiceRequest.Description != "" {

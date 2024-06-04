@@ -5,6 +5,9 @@ const (
 	InvoiceActiveStatus  = "active"
 	InvoiceExpiredStatus = "expired"
 
+	Fiat   = "fiat"
+	Crypto = "crypto"
+
 	BTC  = "BTC"
 	TON  = "TON"
 	ETH  = "ETH"

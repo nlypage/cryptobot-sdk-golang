@@ -56,6 +56,7 @@ func TestCreateInvoice(t *testing.T) {
 		JSON(expectedResponse)
 
 	invoice, err := c.CreateInvoice(CreateInvoiceRequest{
+		CurrencyType:   Crypto,
 		Asset:          USDT,
 		Amount:         "100",
 		Description:    "some description",

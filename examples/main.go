@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/arthurshafikov/cryptobot-sdk-golang/cryptobot"
+	"github.com/qushedo/cryptobot-sdk-golang/cryptobot"
 )
 
 func main() {

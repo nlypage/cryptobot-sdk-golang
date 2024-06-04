@@ -15,6 +15,11 @@ type CreateInvoiceRequest struct {
 	// Supported assets: “USDT”, “TON”, “BTC”, “ETH”, “LTC”, “BNB”, “TRX” and “USDC”.
 	Asset string `json:"asset"`
 
+	//Optional. Required if currency_type is “fiat”.
+	//Fiat currency code. Supported fiat currencies:
+	//“USD”, “EUR”, “RUB”, “BYN”, “UAH”, “GBP”, “CNY”, “KZT”, “UZS”, “GEL”, “TRY”, “AMD”, “THB”, “INR”, “BRL”, “IDR”, “AZN”, “AED”, “PLN” and “ILS".
+	Fiat string `json:"fiat"`
+
 	// Amount of the invoice in float. For example: 125.50
 	Amount string `json:"amount"`
 
@@ -59,6 +64,7 @@ func (c *Client) CreateInvoice(createInvoiceRequest CreateInvoiceRequest) (*Invo
 	responseBodyReader, err := c.request("createInvoice", func(q url.Values) url.Values {
 		q.Add("currency_type", createInvoiceRequest.CurrencyType)
 		q.Add("asset", createInvoiceRequest.Asset)
+		q.Add("fiat", createInvoiceRequest.Fiat)
 		q.Add("amount", createInvoiceRequest.Amount)
 		if createInvoiceRequest.Description != "" {
 			q.Add("description", createInvoiceRequest.Description)

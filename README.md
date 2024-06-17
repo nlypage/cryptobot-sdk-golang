@@ -12,14 +12,14 @@ Use it if you would like to accept payments in cryptocurrency through your Teleg
 # Installation
 
 ```
-go get github.com/qushedo/cryptobot-sdk-golang
+go get github.com/nlypage/cryptobot-sdk-golang
 ```
 
 
 # Quick Start
 
 ```golang
-import "github.com/arthurshafikov/cryptobot-sdk-golang/cryptobot"
+import "github.com/nlypage/cryptobot-sdk-golang/cryptobot"
 
 func main() {
 	client := cryptobot.NewClient(cryptobot.Options{
